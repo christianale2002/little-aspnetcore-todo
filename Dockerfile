@@ -10,6 +10,6 @@ RUN dotnet publish -o out /p:PublishWithAspNetCoreTargetManifest="false"
 FROM microsoft/dotnet:2.0-runtime AS runtime
 ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
-RUN chmod 777 /app
 COPY --from=build /app/AspNetCoreTodo/out ./
+RUN chmod 777 /app
 ENTRYPOINT ["dotnet", "AspNetCoreTodo.dll"]
